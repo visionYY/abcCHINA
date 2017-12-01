@@ -1,0 +1,12 @@
+{
+	"list":[
+		{"name":"账上银行","img":"img/icon_r1_c1.png"},
+		{"name":"数据行情","img":"img/icon_r1_c3.png"},
+		{"name":"图说农行","img":"img/icon_r1_c5.png"},
+		{"name":"营业机构","img":"img/icon_r1_c7.png"},
+		{"name":"在线预约","img":"img/icon_r3_c1.png"},
+		{"name":"信用开","img":"img/icon_r3_c3.png"},
+		{"name":"智能客服","img":"img/icon_r3_c5.png"},
+		{"name":"WAP","img":"img/icon_r3_c7.png"}
+	]
+}

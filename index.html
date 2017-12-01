@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telphone=no, email=no, address=no" >
+	<link rel="stylesheet" href="css/swiper.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="fonts/iconfont.css">
+	<title>Document</title>
+</head>
+<body>
+	<div class="wrap">
+		<header>
+			<a href=""><img src="img/loge.png" alt=""></a>
+			<a href=""><i class="icon iconfont icon-fangdajing"></i><i class="icon iconfont icon-gengduo"></i></a>
+		</header>
+		<section>
+			<div class="banner">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<img src="img/ban.png" alt="">
+					</div>
+					<div class="swiper-slide">
+						<img src="img/ban.png" alt="">
+					</div>
+					<div class="swiper-slide">
+						<img src="img/ban.png" alt="">
+					</div>
+					<div class="swiper-slide">
+						<img src="img/ban.png" alt="">
+					</div>
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+			<div class="lis">
+				<p><i class="icon iconfont icon-50"></i><em>全国——刷农行银联白金开，6积分抢兑BIAA</em><span>2017-11.30</span></p>
+				<p><i class="icon iconfont icon-42 blue"></i><em>全国——刷农行银联白金开，6积分抢兑BIAA</em><span>2017-11.30</span></p>
+			</div>
+			 <div class="list">
+				<h2>便利服务</h2>
+				<ul class="lists">
+		            <!--<li><img src="img/icon_r1_c1.png" alt=""><span>掌上银行</span></li>
+		            <li><img src="img/icon_r1_c3.png" alt=""><span>数据行情</span></li>
+		            <li><img src="img/icon_r1_c5.png" alt=""><span>图说农行</span></li>
+		            <li><img src="img/icon_r1_c7.png" alt=""><span>营业机构</span></li>
+		            <li><img src="img/icon_r3_c1.png" alt=""><span>在线预约</span></li>
+		            <li><img src="img/icon_r3_c3.png" alt=""><span>信用开</span></li>
+		            <li><img src="img/icon_r3_c5.png" alt=""><span>智能客服</span></li>
+		            <li><img src="img/icon_r3_c7.png" alt=""><span>WAP</span></li>-->
+		        </ul>
+			</div> 
+			<div class="list2">
+				<h2>您的每段路程，我们都全心陪伴</h2>
+			</div>
+		</section>
+	</div>
+
+	<script src="js/swiper.js"></script>
+	<script>
+		var listrSwiper = new Swiper('.banner',{
+			loop:true,
+			pagination:'.swiper-pagination',
+			autoplay:1500
+		})
+
+		function ajax(url) {
+            return new Promise(function (resolve, reject) {
+                var xhr = null;
+                var handler = function () {
+                    if (xhr.readyState !== 4) return;
+                    if (xhr.status == 200) {
+                        resolve(xhr.responseText)
+                    } else {
+                        reject();
+                    }
+                }
+                if (window.XMLHttpRequest) {
+                    xhr = new XMLHttpRequest();
+                } else {
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP")
+                }
+                xhr.open("GET", url, true);
+                xhr.send();
+                xhr.onreadystatechange = handler;
+            })
+        }
+
+		var lists = document.querySelector(".lists");
+
+		function fn(data){
+			var str = '';
+			data.list.forEach(function(val){
+				str += `<li><img src="${val.img}" alt=""><span>${val.name}</span></li>`;
+			});
+			lists.innerHTML = str;
+		}
+
+        ajax("http://localhost:8080/data").then(function (result) {
+			fn(JSON.parse(result));	
+        }).catch(function (error) {
+            console.log(error)
+		});  
+		
+		
+	</script>
+</body>
+</html>
